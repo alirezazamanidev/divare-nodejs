@@ -44,3 +44,14 @@
  *    
  */
 
+/**
+ * @swagger
+ * /category/list:
+ *  get:
+ *   tags: [Category]
+ *   summary: Get All categories
+ *   responses:
+ *       200: 
+ *        description: success
+ *                    
+ */

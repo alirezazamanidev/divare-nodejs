@@ -9,7 +9,7 @@ const CategorySchema=new mongoose.Schema({
     parents: {type: [mongoose.Types.ObjectId], required: false, default: []},
 },{versionKey:0,id:0,toJSON:{virtuals:true}});
 
-CategorySchema.virtual('childeren',{
+CategorySchema.virtual('children',{
     ref:'category',
     localField:'_id',
     foreignField:'parent'
