@@ -3,7 +3,7 @@ const mongoose=require('mongoose');
 
 const OTPSchema=new mongoose.Schema({
     code:{type:String,required:false,default:undefined},
-    expireIn:{type:Number,required:false,default:0}
+    expiresIn:{type:Number,required:false,default:0}
 })
 const userSchema=new mongoose.Schema({
     fullName: {type: String, required: false},
