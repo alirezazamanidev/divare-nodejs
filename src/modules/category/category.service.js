@@ -11,6 +11,9 @@ class CategoryService {
     autoBind(this);
     this.#model = CategoryModel;
   }
+  async find(){
+    return await this.#model.find({parent: {$exists: false}});
+  }
   async create(categoryDTO) {
     if (categoryDTO?.psrent && isValidObjectId(categoryDTO.parent)) {
         const existCategory=await this.checkExistById(categoryDTO.parent);

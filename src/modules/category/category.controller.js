@@ -10,6 +10,15 @@ class CategoryController {
       autoBind(this);
       this.#service=CategoryService;
     }
+    async find(req,res,next){
+      try {
+        return res.status(HttpStatus.OK).json({
+          categories:await this.#service.find()
+        })
+      } catch (error) {
+        next(error);
+      }
+    }
 
     async create(req,res,next){
       try {
