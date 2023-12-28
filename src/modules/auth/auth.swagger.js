@@ -16,6 +16,16 @@
  *          properties:
  *              mobile:
  *                 type: string
+ *       CheckOTP:
+ *          type: object
+ *          required: 
+ *              -  mobile
+ *              -  code
+ *          properties:
+ *              mobile:
+ *                type: string
+ *              code:
+ *                type: string
  *
  */
 
@@ -37,4 +47,23 @@
  *         description: bad request
  *
  *
+ */
+
+/**
+ * @swagger
+ * /auth/check-otp:
+ *  post:
+ *   tags: [Auth]
+ *   summary: check otp and set cookie after login user
+ *   requestBody:
+ *     content:
+ *        application/x-www-form-urlencoded:
+ *           schema:
+ *              $ref: '#/components/schemas/CheckOTP' 
+ *   responses:
+ *       200:
+ *         description: success
+ *       400:
+ *         description: bad request
+ * 
  */
