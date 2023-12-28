@@ -1,8 +1,8 @@
-const authRoutes = require('./modules/auth/auth.routes');
+const {AuthRoutes} = require('./modules/auth/auth.routes');
 const router=require('express').Router();
 
 
-router.use('/auth',authRoutes);
+router.use('/auth',AuthRoutes);
 module.exports={
     MainRoutes:router
 }

@@ -4,7 +4,6 @@ const {randomInt}=require('crypto');
 const createHttpError = require('http-errors');
 const { AuthMessage } = require('./auth.message');
 class AuthService {
-
     #model;
     constructor(){
         autoBind(this);
