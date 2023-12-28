@@ -36,8 +36,8 @@ class CategoryService {
     return category;
   }
   async remove(cateId){
-    await this.checkExistById(id);
-    const categoryDeleteResult=  await this.#model.deleteOne({_id: id});
+    await this.checkExistById(cateId);
+    const categoryDeleteResult=  await this.#model.deleteOne({_id:cateId});
     if(categoryDeleteResult.deletedCount==0) throw createHttpError.InternalServerError();
 
     return true;

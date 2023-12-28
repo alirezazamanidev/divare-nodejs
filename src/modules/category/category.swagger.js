@@ -55,3 +55,20 @@
  *        description: success
  *                    
  */
+
+/**
+ * @swagger
+ * /category/{cateId}:
+ *   delete:
+ *    tags: [Category]
+ *    summary: Delete one Category
+ *    parameters:
+ *        -  in: path
+ *           name: cateId
+ *           type: string
+ *           description: Enter category Id 
+ *           required: true
+ *    responses:
+ *        200:
+ *         descreiption: success
+ */
