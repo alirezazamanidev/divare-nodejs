@@ -2,7 +2,7 @@ const autoBind = require("auto-bind");
 const {AuthService}=require('./auth.service');
 const { AuthMessage } = require("./auth.message");
 const {StatusCodes:HttpStatus}=require('http-status-codes')
-
+const CookieNames=require('./../../common/constant/cookie.enum')
 class AuthController {
   #service;
   constructor() {

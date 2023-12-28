@@ -17,11 +17,11 @@ class AuthService {
         const otp={
             code:randomInt(10000,99999),
             expiresIn:now +(1000*60*2)
-        }
+        };
         if(!user) {
             const newUser=await this.#model.create({mobile,otp});
             return newUser;
-        }إ
+        };
         if(user.otp &&user.otp.expiresIn >now) throw createHttpError.BadRequest(AuthMessage.OtpCodeNotExpired);
         user.otp=otp;
         await user.save();
