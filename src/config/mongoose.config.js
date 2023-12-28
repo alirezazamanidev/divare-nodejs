@@ -5,4 +5,4 @@ dotenv.config();
 const Uri=process.env.MONGO_URI;
 mongoose.connect(Uri)
 .then(()=>console.log('Conected to mongoDb!'))
-// .catch((err)=>console.log(err.message));
+.catch((err)=>console.log(err.message));
