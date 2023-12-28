@@ -2,6 +2,7 @@ const autoBind=require('auto-bind');
 const {StatusCodes:HttpStatus}=require('http-status-codes')
 
 const { CategoryService } = require('./category.service');
+const CategoryMessage = require('./category.message');
 class CategoryController {
 
     #service;

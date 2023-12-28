@@ -5,3 +5,5 @@ const CategoryMessage={
     AlreadyExist: "category already exist",
     Deleted: "category deleted successfully",
 }
+
+module.exports=CategoryMessage;

@@ -4,6 +4,7 @@ const { isValidObjectId, Types } = require("mongoose");
 const createHttpError = require("http-errors");
 
 const slugify=require('slugify');
+const CategoryMessage = require("./category.message");
 class CategoryService {
   #model;
   constructor() {
@@ -23,7 +24,7 @@ class CategoryService {
         ]
     }
     if(categoryDTO?.slug){
-        categoryDTO.slug=slugify(categoryDTO);
+        categoryDTO.slug=slugify(categoryDTO.slug);
         await this.alreadyExistBySlug(categoryDTO.slug);
     }else{
         categoryDTO.slug = slugify(categoryDTO.name)
