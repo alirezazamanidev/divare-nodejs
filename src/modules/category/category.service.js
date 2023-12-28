@@ -35,7 +35,15 @@ class CategoryService {
     const category=await this.#model.create(categoryDTO);
     return category;
   }
+  async remove(cateId){
+    await this.checkExistById(id);
+    const categoryDeleteResult=  await this.#model.deleteOne({_id: id});
+    if(categoryDeleteResult.deletedCount==0) throw createHttpError.InternalServerError();
+
+    return true;
+  }
   async checkExistById(id) {
+    if(!isValidObjectId(id)) throw createHttpError.BadRequest('Category Id is not objectId!');
     const category = await this.#model.findById(id);
     if (!category) throw createHttpError.NotFound(CategoryMessage.NotFound);
     return category;
