@@ -8,7 +8,7 @@ const router=require('express').Router();
 router.use('/auth',AuthRoutes);
 router.use('/user',UserRoutes);
 router.use('/category',CategoryRoutes);
-router.use('/option',OptionRoutes);authorization.guard
+router.use('/option',OptionRoutes);
 module.exports={
     MainRoutes:router
 }

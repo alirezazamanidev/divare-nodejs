@@ -6,6 +6,7 @@ class UserController {
     async whoiam(req,res,next){
         try {
             const user = req.user;
+            console.log(user);
             return res.json(user);
         } catch (error) {
             next(error);
