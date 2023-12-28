@@ -34,6 +34,16 @@ class AuthController {
       next(error);
     }
   }
+
+  async logout(req,res,next){
+    try{
+      return res.clearCookie(CookieNames.AccessToken).status(200).json({
+        message: AuthMessage.LogoutSuccessfully
+    })
+    }catch(err){
+      next(err);
+    }
+  }
 }
 
 module.exports = {
