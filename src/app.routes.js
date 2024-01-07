@@ -12,9 +12,14 @@ router.use('/category',CategoryRoutes);
 router.use('/option',OptionRoutes);
 // router.use('/post',PostRouter);
 
-router.get("/",(req,res)=>{
+router.get("/panel",(req,res)=>{
     res.render('./pages/panel/dashboard.ejs')
+})
+router.get("/",(req,res)=>{
+    res.locals.layout='./layouts/website/main.ejs'
+    res.render('./pages/home/index.ejs')
 })
 module.exports={
     MainRoutes:router
 }
+
