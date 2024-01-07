@@ -15,10 +15,11 @@ async function main(){
     require('./src/config/mongoose.config');
     app.use(express.json());
     app.use(express.urlencoded({extended:true}));
-    app.use(express.static('public'));
     app.use(cookieParser());
+    app.use(express.static('public'));
+    app.use(ExpressEjsLayouts);
     app.set("view engine", "ejs");
-    app.set("layout", "./layouts/panel/main.ejs");
+    app.set("layout", "./layouts/panel/main");
     app.set("layout extractScripts", true);
     app.set("layout extractStyles", true);
     app.use(MainRoutes);
