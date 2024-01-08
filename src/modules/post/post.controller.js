@@ -19,8 +19,8 @@ class PostController {
                     slug = slug.trim();
                     category = await  CategoryModel.findOne({slug});
                     if (!category) throw new createHttpError.NotFound(PostMessage.NotFound);
-                    // options = await this.#service.getCategoryOptions(category._id);
-                    // if (options.length === 0) options = null;
+                    options = await this.#service.getCategoryOptions(category._id);
+                    if (options.length === 0) options = null;
                     showBack = true;
                     match = {
                         parent: category._id
