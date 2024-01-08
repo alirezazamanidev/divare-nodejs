@@ -10,7 +10,7 @@ router.use('/auth',AuthRoutes);
 router.use('/user',UserRoutes);
 router.use('/category',CategoryRoutes);
 router.use('/option',OptionRoutes);
-// router.use('/post',PostRouter);
+router.use('/post',PostRouter);
 
 router.get("/panel",(req,res)=>{
     res.render('./pages/panel/dashboard.ejs')

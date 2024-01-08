@@ -6,7 +6,8 @@
     </div>
     <%}%>
     <div class="p-3">
-      <%if(!options){%> <%if(categories && categories.length > 0 ){%>
+      <%if(!options){%> 
+        <%if(categories && categories.length > 0 ){%>
       <ul>
         <%categories.forEach(category => {%>
         <li>
@@ -20,7 +21,8 @@
         </li>
         <%})%>
       </ul>
-      <%}%> <%}else{%>
+      <%}%> 
+      <%}else{%>
         <form action="/post/create" method="post" enctype="multipart/form-data">
           <input type="hidden" name="lat" id="lat">
           <input type="hidden" name="lng" id="lng">
