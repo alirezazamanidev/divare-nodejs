@@ -40,11 +40,25 @@ class PostController {
       next(error);
     }
   }
-  async create(req,res,next){
+  async create(req, res, next) {
     try {
-        console.log(req.body);
+      const {
+        title_post: title,
+        description,
+        lat,
+        lng,
+        images,
+        category,
+      } = req.body;
+      await this.#service.create({
+        title,
+        description,
+        coordinate: { lat, lng },
+        images: [],
+        category:new ObjecId,
+      });
     } catch (error) {
-        next(error);
+      next(error);
     }
   }
 }
