@@ -8,6 +8,7 @@ const AllExceptionHandler = require('./src/common/exception/all-exception.handle
 const SwaggerConfig = require('./src/config/swagger.config');
 const ExpressEjsLayouts=require('express-ejs-layouts');
 const moment = require('jalali-moment');
+const methodOverride=require('method-override');
 config();
 async function main(){
     const app=express();
@@ -19,6 +20,7 @@ async function main(){
     app.use(cookieParser());
     app.use(express.static('public'));
     app.use(ExpressEjsLayouts);
+    app.use(methodOverride('_method'))
     app.set("view engine", "ejs");
     app.set("layout", "./layouts/panel/main");
     app.set("layout extractScripts", true);

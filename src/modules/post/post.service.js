@@ -25,6 +25,17 @@ class PostService {
   async find(query={}){
     return this.#model.find(query);
   }
+  async checkExist(postId){
+    if(postId && !isValidObjectId(postId)) throw createHttpError.BadRequest(PostMessage.RequestNotValid);
+    const post=await this.#model.findById(postId);
+    if(!post) throw createHttpError.NotFound(PostMessage.NotFound);
+    return post;
+  }
+  async remove(postId){
+    const post=await this.checkExist(postId);
+    const result=await this.#model.deleteOne({_id:post._id});
+    if(result.deletedCount==0) throw createHttpError.InternalServerError();
+  }
 }
 module.exports = {
   PostService: new PostService(),

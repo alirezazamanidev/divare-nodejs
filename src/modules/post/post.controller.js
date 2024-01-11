@@ -97,7 +97,7 @@ class PostController {
   async findMyPosts(req, res, next) {
     try {
       const userId = req.user._id;
-      const posts = await this.#service.find({userId});
+      const posts = await this.#service.find({ userId });
       res.render("./pages/panel/posts.ejs", {
         posts,
         count: posts.length,
@@ -107,6 +107,16 @@ class PostController {
       this.success_message = null;
     } catch (error) {
       next(error);
+    }
+  }
+  async remove(req,res,next){
+    try {
+        const {id} = req.params;
+        await this.#service.remove(id);
+        this.success_message = PostMessage.Deleted;
+        return res.redirect('/post/my');
+    } catch (error) {
+        next(error);
     }
   }
 }
