@@ -8,6 +8,7 @@ const { getAddressDetail } = require("../../common/utils/http");
 
 class PostController {
   #service;
+  success_message;
   constructor() {
     autoBind(this);
     this.#service = PostService;
@@ -47,6 +48,7 @@ class PostController {
   }
   async create(req, res, next) {
     try {
+      const userId = req.user._id;
       const images = req?.files?.map((image) => image?.path?.slice(7));
       const {
         title_post: title,
@@ -71,6 +73,7 @@ class PostController {
         lng
       );
       await this.#service.create({
+        userId,
         images,
         title,
         amount: Number(amount),
@@ -84,18 +87,26 @@ class PostController {
         district,
       });
 
-      return res.send("Saved post");
+      this.success_message = PostMessage.Created;
+      return res.redirect("/post/my");
     } catch (error) {
       console.log(error);
       next(error);
     }
   }
-  async find(req,res,next){
+  async findMyPosts(req, res, next) {
     try {
-        const posts=await this.#service.find();
-        return res.render('./pages/panel/posts.ejs',{posts})
+      const userId = req.user._id;
+      const posts = await this.#service.find({userId});
+      res.render("./pages/panel/posts.ejs", {
+        posts,
+        count: posts.length,
+        success_message: this.success_message,
+        error_message: null,
+      });
+      this.success_message = null;
     } catch (error) {
-        next(error);
+      next(error);
     }
   }
 }

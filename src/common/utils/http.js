@@ -10,7 +10,6 @@ const getAddressDetail = async (lat, lng) => {
                 "x-api-key": process.env.MAP_API_KEY
             }
         }).then(res => res.data);
-        console.log(result);
     }
     return {
         province: result?.province,
