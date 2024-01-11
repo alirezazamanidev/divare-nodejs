@@ -7,6 +7,7 @@ const NotFoundHandler = require('./src/common/exception/not-found.handler');
 const AllExceptionHandler = require('./src/common/exception/all-exception.handler');
 const SwaggerConfig = require('./src/config/swagger.config');
 const ExpressEjsLayouts=require('express-ejs-layouts');
+const moment = require('jalali-moment');
 config();
 async function main(){
     const app=express();
@@ -23,6 +24,7 @@ async function main(){
     app.set("layout extractScripts", true);
     app.set("layout extractStyles", true);
     app.use(MainRoutes);
+    app.locals.moment=moment;
     // swagger config
     SwaggerConfig(app);
     NotFoundHandler(app);
