@@ -4,6 +4,8 @@ const { CategoryModel } = require("../category/category.model");
 const { removePropertyInObject } = require("../../common/utils/functions");
 const { Types } = require("mongoose");
 const { PostMessage } = require("./post.message");
+const { getAddressDetail } = require("../../common/utils/http");
+
 class PostController {
   #service;
   constructor() {
@@ -52,21 +54,22 @@ async create (req, res, next) {
         const options = removePropertyInObject(req.body, ["amount", 'title_post', "description", "lat", "lng", "category", "images"]);
       
     
-        // const {address, province, city, district} = await getAddressDetail(lat, lng);
-       
+        const {address, province, city, district} = await getAddressDetail(lat, lng);
         await this.#service.create({
-        
+          
             title,
-            amount,
+            amount:Number(amount),
             content,
             coordinate: [lat, lng],
             category: new Types.ObjectId(category),
-            images,
-            options
-          
+            options,
+            address,
+            province,
+            city,
+            district
         });
         
-        return res.redirect('/post/my');
+        return res.send('Saved post');
     } catch (error) {
         console.log(error);
         next(error);
