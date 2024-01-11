@@ -9,6 +9,7 @@ router.get('/create',Authorization,PostController.createPostPage);
 router.post('/create',Authorization,upload.array('images',10),PostController.create);
 router.get('/my',Authorization,PostController.findMyPosts);
 router.delete('/delete/:id',Authorization,PostController.remove);
+router.get('/:id',PostController.showPost);
 module.exports = {
     PostRouter: router
 };

@@ -15,14 +15,14 @@ router.use('/post',PostRouter);
 router.get("/panel",(req,res)=>{
     res.render('./pages/panel/dashboard.ejs')
 })
-router.get("/",(req,res)=>{
-    res.locals.layout='./layouts/website/main.ejs'
-    res.render('./pages/home/index.ejs')
-})
-router.get('/login',(req,res)=>{
-    res.locals.layout='./layouts/auth/main.ejs';
-    res.render('./pages/auth/login.ejs')
-})
+// router.get("/",(req,res)=>{
+//     res.locals.layout='./layouts/website/main.ejs'
+//     res.render('./pages/home/index.ejs')
+// })
+// router.get('/login',(req,res)=>{
+//     res.locals.layout='./layouts/auth/main.ejs';
+//     res.render('./pages/auth/login.ejs')
+// })
 module.exports={
     MainRoutes:router
 }

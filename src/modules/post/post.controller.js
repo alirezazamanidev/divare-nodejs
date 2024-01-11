@@ -50,6 +50,7 @@ class PostController {
     try {
       const userId = req.user._id;
       const images = req?.files?.map((image) => image?.path?.slice(7));
+      console.log(images);
       const {
         title_post: title,
         description: content,
@@ -115,6 +116,15 @@ class PostController {
         await this.#service.remove(id);
         this.success_message = PostMessage.Deleted;
         return res.redirect('/post/my');
+    } catch (error) {
+        next(error);
+    }
+  }
+  async showPost(req,res,next){
+    try {
+        const post=await this.#service.checkExist(req.params.id);
+        res.locals.layout='./layouts/website/main.ejs';
+        res.render('./pages/home/post.ejs',{post});
     } catch (error) {
         next(error);
     }
